@@ -1,13 +1,17 @@
 
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.cdnfonts.com/css/source-serif-pro" rel="stylesheet" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <title>CV Manfred Export</title>
@@ -25,14 +29,18 @@
         --spacing_48: calc(var(--spacing_base) * 12);
         --spacing_64: calc(var(--spacing_base) * 16);
         /* colors */
-        --primary_color: #1B2B33;/* only this color can be changed  */
-        --light_color: #f0f8f9;
-        --white_color: #fbfbfa;
-        --black_color_800: #111a1f;
-        --black_color_900: #0d1418;
-        --gray_color_900: #5c5a58;
-        --gray_color_50: #e9eaeb;
+        --manfred-dark: #353241;
+        --manfred-blue: #1e0b6e;
+        --manfred-purple: #7d64d6;
+        --manfred-green-blue: #3ba0b7;
+        --manfred-green-light: #5ecabf;
+        --manfred-grey: #837e93;
+        --manfred-light: #f8f7f3;
+        --manfred-light-green: #78d549;
+        --manfred-cream: #ebe8df;
+        --manfred-gradient: linear-gradient(90deg, #1e0b6e 0%, #3ba0b7 84.74%, #5ecabf 95.24%);
       }
+
       /* General styles */
       * {
         margin: 0;
@@ -40,726 +48,802 @@
         box-sizing: border-box;
       }
       html {
-        font-family: Poppins, sans-serif;
-        min-width: 390px;
-        font-size: 16px;
-        font-style: normal;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 15px;
+        color: var(--manfred-dark);
+        background-color: var(--manfred-light);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
       body {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
         min-height: 100vh;
       }
-      .container {
-        max-width: 1200px;
-        background-color: var(--white_color);
-        display: grid;
-        grid-template-areas:
-          "aside"
-          "main";
+
+      .root {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing_32);
+        min-height: 100vh;
+        max-width: 1100px;
+        padding: var(--spacing_64) var(--spacing_32);
       }
-      .divider {
-        border-radius: var(--spacing_base);
-        border: var(--spacing_2) solid var(--primary_color);
-        width: 50%;
+
+      h1 {
+        display: flex;
+        flex-direction: column;
+        min-width: min-content;
+        text-transform: capitalize;
+        font-family: 'Source Serif Pro', sans-serif;
+        font-size: 75px;
+        font-weight: 900;
+        letter-spacing: 1.23px;
+        background: var(--manfred-gradient);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
+
+      .gradient__background {
+        display: flex;
+        flex-grow: 1;
+        background: var(--manfred-gradient);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+      }
+      @media (min-width: 728px) {
+        h1 {
+          font-size: 82px;
+          font-weight: 900;
+        }
+      }
+
+      .surname {
+        font-size: 48px;
+        -webkit-text-fill-color: var(--manfred-blue);
+        letter-spacing: -0.72px;
+        text-transform: capitalize;
+      }
+
+      h2 {
+        font-family: 'Source Serif Pro', sans-serif;
+        font-size: 28px;
+        font-weight: 900;
+        letter-spacing: 1.4px;
+      }
+
+      h3 {
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+      }
+
+      h4 {
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 24px;
+        letter-spacing: 0.9px;
+      }
+
+      a {
+        color: var(--manfred-green-blue);
+        text-decoration: none;
+        font-weight: 600;
+        line-height: 24px;
+        letter-spacing: 0.75px;
+      }
+
+      .technologie__icon--gray-scale {
+        max-width: 35px;
+        filter: grayscale(100%);
+      }
+
       /* header styles */
       header {
         display: flex;
         flex-direction: column;
-        gap: var(--spacing_16);
-      }
-      h1 {
-        display: flex;
-        flex-direction: column;
-        color: var(--white_color);
-        font-size: 48px;
-        font-weight: 600;
-        line-height: 28px;
-        text-transform: uppercase;
-        gap: var(--spacing_16);
-      }
-      h1 > span {
-        font-size: 36px;
-      }
-      .job-title {
-        color: var(--gray_color_50);
-        font-size: 20px;
-        font-weight: 500;
-        letter-spacing: 0.4px;
-      }
-      header > hr {
-        border: 1px solid var(--light_color);
+        justify-content: center;
+        align-self: flex-start;
+        gap: var(--spacing_24);
         width: 100%;
       }
 
-      @media (min-width: 1024px) {
-        h1 {
-          gap: var(--spacing_8);
-        }
-        .job-title {
-          font-size: 16px;
-        }
-        .container {
-          grid-template-areas: "aside main";
-          grid-template-columns: 333px auto;
-          align-self: center;
-        }
+      header > img {
+        align-self: center;
+        border-radius: 225px;
+        min-width: 225px;
+        min-height: 225px;
+        max-width: 350px;
+        max-height: 350px;
+        object-fit: cover;
+        background: var(--manfred-gradient);
       }
-      /* aside styles */
-      aside {
-        grid-area: aside;
-        background-color: var(--primary_color);
+
+      .header__content {
         display: flex;
         flex-direction: column;
-        padding: var(--spacing_64) var(--spacing_32);
-        gap: var(--spacing_32);
+        flex-grow: 1;
+        gap: var(--spacing_24);
       }
-      .aside__section {
+
+      .header__content__name {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        gap: var(--spacing_8);
+        flex-grow: 1;
+        padding: var(--spacing_16) 0px;
       }
-      .aside__section > h3 {
-        color: var(--white_color);
-        font-size: 16px;
+
+      .header__content__name > * {
+        padding-left: var(--spacing_8);
+      }
+
+      .job-title {
+        color: var(--manfred-dark);
+        font-family: 'Source Serif Pro', sans-serif;
+        font-size: 24px;
+        font-style: italic;
         font-weight: 600;
+        letter-spacing: 1.2px;
       }
-      .aside__section__link-items {
-        display: flex;
-        padding: 0px var(--spacing_8);
-        justify-content: space-between;
-        row-gap: var(--spacing_32);
-        column-gap: var(--spacing_8);
-        font-size: 14px;
-        flex-wrap: wrap;
-      }
-      .aside__section__list-items {
-        color: var(--white_color);
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 28px;
-        display: flex;
-        flex-direction: column;
-        gap: var(--spacing_8);
-        padding-left: var(--spacing_32);
-      }
-      .aside__section__item {
+
+      .header__content__address {
         display: flex;
         align-items: center;
         gap: var(--spacing_8);
+        padding-left: var(--spacing_8);
       }
-      .aside__section__item > a {
-        color: var(--white_color);
-        font-size: 14px;
-        text-decoration: none;
-        text-transform: capitalize;
+
+      .header__content__address > p {
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: -0.18px;
       }
-      .aside__section__item > a:hover {
-        color: var(--black_color);
+
+      .header__content__links {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing_32);
+        padding-left: var(--spacing_8);
       }
+
       @media (min-width: 728px) {
-        aside {
-          padding: var(--spacing_64) var(--spacing_32) var(--spacing_32)
-            var(--spacing_32);
+        .header__content__address > p {
+          font-size: 16px;
         }
-        .aside__section__link-items {
-          flex-wrap: nowrap;
+        .job-title {
+          font-size: 32px;
         }
+
+        header {
+          justify-content: flex-start;
+          align-items: center;
+          flex-direction: row;
+          gap: var(--spacing_48);
+        }
+
+        .header__content {
+          justify-content: space-between;
+        }
+
+        .header__content__name {
+          padding: 0px;
+        }
+
       }
-      @media (min-width: 1024px) {
-        aside {
-          grid-area: aside;
-          padding: var(--spacing_64) var(--spacing_32);
-          width: 100%;
-        }
-        h1 {
-          font-size: 36px;
-        }
-        h1 > span {
-          font-size: 24px;
-        }
-        .aside__section__link-items {
-          flex-direction: column;
-          gap: var(--spacing_16);
-        }
-      }
+
       /* main section styles */
       main {
-        grid-area: main;
         display: flex;
-        padding: var(--spacing_32) var(--spacing_16);
+        padding: var(--spacing_32) 0px;
         flex-direction: column;
-        gap: var(--spacing_32);
+        gap: var(--spacing_64);
       }
+
       .main__section {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: var(--spacing_16);
+        gap: var(--spacing_32);
       }
+
+      .main__section > p {
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0.75px;
+      }
+
+      .main__section__item {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        gap: var(--spacing_16);
+        width: 100%;
+        padding-bottom: var(--spacing_32);
+        border-bottom: 1px solid rgba(94, 202, 191, 0.3);
+      }
+
       .main__section__header {
         display: flex;
         flex-direction: column;
+        gap: var(--spacing_16);
       }
-      .main__section__header > h2 {
-        color: var(--primary_color);
-        text-align: center;
-        font-size: 24px;
-        font-weight: 600;
-        line-height: normal;
+
+      .about-me__section {
+        gap: var(--spacing_16);
       }
-      .main__section__item {
-        color: var(--black_color_900);
-        font-size: 12px;
-        font-weight: 400;
+
+      .ul__languages {
         display: flex;
-        gap: var(--spacing_8);
-        flex-grow: 1;
-      }
-      .section__content {
         flex-direction: column;
-        gap: var(--spacing_8);
+        gap: var(--spacing_16);
+        width: 100%;
+      }
+
+      .li__languages {
         display: flex;
+        gap: var(--spacing_16);
+        padding: var(--spacing_16);
+        justify-content: space-between;
+        align-items: center;
+        border-radius: var(--spacing_8);
+        background: #fff;
+        box-shadow: 0px 1px 2px 0px rgba(11, 15, 6, 0.25);
+        width: 100%;
+        min-width: 300px;
       }
-      .section__content > h3 {
-        color: var(--black_color_900);
-        font-size: 20px;
-        font-weight: 600;
-        line-height: 20px;
-      }
-      .section__content > h4 {
-        color: var(--black_color_900);
-        font-size: 16px;
-        font-weight: 400;
-      }
-      .section__content__date {
-        display: flex;
-        gap: var(--spacing_8);
-      }
-      .section__content__data {
-        color: var(--gray_color_900);
-        line-height: 24px;
-      }
-      .section__content__data b {
-        font-weight: 600;
-      }
-      .section__content__data__ul {
-        font-weight: 300;
-        padding-left: var(--spacing_16);
-      }
-      .data {
-        color: var(--gray_color_900);
-        font-weight: 400;
-      }
-      .data b {
-        font-weight: 700;
-      }
-      .dot-icon {
-        display: flex;
-        padding: var(--spacing_base);
-      }
-.date {
-  text-transform: capitalize;
-}
 
       @media (min-width: 728px) {
-        main {
-          padding: var(--spacing_32) var(--spacing_64);
+        .ul__languages {
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+        .li__languages {
+          width: 300px;
         }
       }
-      @media (min-width: 1024px) {
-        main {
-          grid-area: main;
-          padding: var(--spacing_64);
+
+      .main__lang__level {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: var(--spacing_base);
+        color: var(--manfred-grey);
+        text-transform: uppercase;
+        font-family: Montserrat;
+        font-size: 10px;
+        font-weight: 500;
+        font-variant: all-small-caps;
+        letter-spacing: 0.5px;
+      }
+
+      .ul__technologies {
+        display: flex;
+        gap: var(--spacing_16);
+        flex-wrap: wrap;
+      }
+
+      @media (min-width: 728px) {
+        .ul__technologies {
+          display: inline-flex;
+          flex-direction: row;
+          align-items: flex-start;
+          align-content: flex-start;
+          gap: var(--spacing_16);
+          flex-wrap: wrap;
         }
+      }
+
+      .li__technologies {
+        font-weight: 600;
+        letter-spacing: 0.75px;
+        display: flex;
+        padding: var(--spacing_8) var(--spacing_12);
+        align-items: center;
+        gap: var(--spacing_8);
+        border-radius: var(--spacing_8);
+        background: #fff;
+        box-shadow: 0px 1px 2px 0px rgba(11, 15, 6, 0.25);
+      }
+
+      .main__section__skills__ul {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing_16);
+        width: 100%;
+      }
+
+      .main__section__skills__li {
+        width: 100%;
+        padding: var(--spacing_16);
+        border-radius: var(--spacing_8);
+        background: #fff;
+        box-shadow: 0px 1px 2px 0px rgba(11, 15, 6, 0.25);
+        font-weight: 600;
+        letter-spacing: 0.75px;
+        list-style-position: inside;
+      }
+
+      .section__content__date {
+        display: flex;
+        height: 18px;
+        align-items: flex-start;
+        gap: var(--spacing_16);
+        padding-bottom: var(--spacing_16);
+      }
+
+      .main__section__data {
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0.75px;
+      }
+
+      .main__section__data > ul {
+        padding-left: var(--spacing_16);
+      }
+
+      .tech__tools__heading {
+        font-family: 'Source Serif Pro', sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 24px;
+        letter-spacing: 0.9px;
       }
     </style>
   </head>
   <body>
-    <div class="container">
-
-
-      <aside>
+    <div class="root">
 
       <header>
 
-      
-    <h1>Maria Teresa <br /><span>Milanés Barroso</span></h1>
-    <hr />
+        
+        <section class="header__content">
+
+
+
+            <div class="header__content__name">
+    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="10" viewBox="0 0 64 10" fill="none">
+      <path d="M1.10269e-06 5L64 5" stroke="#3BA0B7" stroke-width="9" />
+    </svg>
+    <div class="gradient__background">
+      <h1>Maria Teresa </h1>
+    </div>
+    <h2 class="surname">Milanés Barroso</h2>
     <p class="job-title">Frontend developer junior</p>
-    
+  </div>
+    <div class="header__content__address">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="24" viewBox="0 0 18 24" fill="none">
+        <g clip-path="url(#clip0_1762_1661)">
+          <path
+            d="M10.1109 23.4C12.5156 20.3906 18 13.0969 18 9C18 4.03125 13.9688 0 9 0C4.03125 0 0 4.03125 0 9C0 13.0969 5.48438 20.3906 7.88906 23.4C8.46562 24.1172 9.53438 24.1172 10.1109 23.4ZM14.2969 6.79688L8.29688 12.7969C7.85625 13.2375 7.14375 13.2375 6.70781 12.7969L3.70312 9.79688C3.2625 9.35625 3.2625 8.64375 3.70312 8.20781C4.14375 7.77188 4.85625 7.76719 5.29219 8.20781L7.49531 10.4109L12.7031 5.20312C13.1438 4.7625 13.8562 4.7625 14.2922 5.20312C14.7281 5.64375 14.7328 6.35625 14.2922 6.79219L14.2969 6.79688Z"
+            fill="#3BA0B7"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_1762_1661">
+            <rect width="18" height="24" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+      <p>Málaga , España</p>
+    </div>
 
+              <div class="header__content__links">
+        <a href=https://www.linkedin.com/in/mteresamb/ target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <g clip-path="url(#clip0_1745_1632)">
+              <path
+                d="M20.447 20.452H16.893V14.883C16.893 13.555 16.866 11.846 15.041 11.846C13.188 11.846 12.905 13.291 12.905 14.785V20.452H9.351V9H12.765V10.561H12.811C13.288 9.661 14.448 8.711 16.181 8.711C19.782 8.711 20.448 11.081 20.448 14.166V20.452H20.447ZM5.337 7.433C5.06588 7.43313 4.79739 7.37979 4.54691 7.27604C4.29642 7.17229 4.06886 7.02015 3.87724 6.82835C3.68562 6.63654 3.5337 6.40883 3.43019 6.15825C3.32668 5.90766 3.27361 5.63912 3.274 5.368C3.2742 4.95978 3.39544 4.56078 3.6224 4.22147C3.84936 3.88216 4.17184 3.61777 4.54907 3.46173C4.92629 3.30569 5.34131 3.26502 5.74165 3.34485C6.14198 3.42469 6.50966 3.62144 6.79817 3.91024C7.08669 4.19903 7.28309 4.5669 7.36254 4.96731C7.44198 5.36773 7.40091 5.78271 7.2445 6.15978C7.0881 6.53685 6.8234 6.85908 6.48387 7.08571C6.14433 7.31234 5.74522 7.4332 5.337 7.433ZM7.119 20.452H3.555V9H7.119V20.452ZM22.225 0H1.771C0.792 0 0 0.774 0 1.729V22.271C0 23.227 0.792 24 1.771 24H22.222C23.2 24 24 23.227 24 22.271V1.729C24 0.774 23.2 0 22.222 0H22.225Z"
+                fill="#3BA0B7"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_1745_1632">
+                <rect width="24" height="24" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+        </a>
+    <div class="header__content__links">
+        <a href=https://github.com/MTeresaMB target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <g clip-path="url(#clip0_1745_1636)">
+              <path
+                d="M12 0.296875C5.37 0.296875 0 5.66988 0 12.2969C0 17.5999 3.438 22.0969 8.205 23.6819C8.805 23.7949 9.025 23.4239 9.025 23.1049C9.025 22.8199 9.015 22.0649 9.01 21.0649C5.672 21.7889 4.968 19.4549 4.968 19.4549C4.422 18.0699 3.633 17.6999 3.633 17.6999C2.546 16.9559 3.717 16.9709 3.717 16.9709C4.922 17.0549 5.555 18.2069 5.555 18.2069C6.625 20.0419 8.364 19.5119 9.05 19.2049C9.158 18.4289 9.467 17.8999 9.81 17.5999C7.145 17.2999 4.344 16.2679 4.344 11.6699C4.344 10.3599 4.809 9.28988 5.579 8.44988C5.444 8.14688 5.039 6.92688 5.684 5.27388C5.684 5.27388 6.689 4.95188 8.984 6.50388C9.944 6.23688 10.964 6.10488 11.984 6.09888C13.004 6.10488 14.024 6.23688 14.984 6.50388C17.264 4.95188 18.269 5.27388 18.269 5.27388C18.914 6.92688 18.509 8.14688 18.389 8.44988C19.154 9.28988 19.619 10.3599 19.619 11.6699C19.619 16.2799 16.814 17.2949 14.144 17.5899C14.564 17.9499 14.954 18.6859 14.954 19.8099C14.954 21.4159 14.939 22.7059 14.939 23.0959C14.939 23.4109 15.149 23.7859 15.764 23.6659C20.565 22.0919 24 17.5919 24 12.2969C24 5.66988 18.627 0.296875 12 0.296875Z"
+                fill="#3BA0B7"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_1745_1636">
+                <rect width="24" height="24" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+        </a>
+  </div>
 
+        </section>
 
       </header>
 
-        <div class="aside__section">
-        <h3>Mis enlaces</h3>
-        <div class="aside__section__link-items">
-        <div class="aside__section__item">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="14"
-            height="15"
-            viewBox="0 0 14 15"
-            fill="none"
-          >
-            <g clip-path="url(#clip0_1324_769)">
-              <path
-                d="M11.9274 12.4303H9.85425V9.18175C9.85425 8.40708 9.8385 7.41017 8.77392 7.41017C7.693 7.41017 7.52792 8.25308 7.52792 9.12458V12.4303H5.45475V5.75H7.44625V6.66058H7.47308C7.75133 6.13558 8.428 5.58142 9.43892 5.58142C11.5395 5.58142 11.928 6.96392 11.928 8.7635V12.4303H11.9274ZM3.11325 4.83592C2.9551 4.83599 2.79848 4.80488 2.65236 4.74436C2.50625 4.68383 2.3735 4.59509 2.26172 4.4832C2.14994 4.37132 2.06133 4.23848 2.00095 4.09231C1.94056 3.94614 1.9096 3.78949 1.90983 3.63133C1.90995 3.3932 1.98067 3.16046 2.11307 2.96253C2.24546 2.76459 2.43357 2.61036 2.65362 2.51934C2.87367 2.42832 3.11576 2.4046 3.34929 2.45117C3.58282 2.49774 3.7973 2.61251 3.9656 2.78097C4.1339 2.94944 4.24847 3.16402 4.29481 3.3976C4.34116 3.63118 4.3172 3.87325 4.22596 4.09321C4.13473 4.31316 3.98032 4.50113 3.78225 4.63333C3.58419 4.76553 3.35138 4.83603 3.11325 4.83592ZM4.15275 12.4303H2.07375V5.75H4.15275V12.4303ZM12.9646 0.5H1.03308C0.462 0.5 0 0.9515 0 1.50858V13.4914C0 14.0491 0.462 14.5 1.03308 14.5H12.9628C13.5333 14.5 14 14.0491 14 13.4914V1.50858C14 0.9515 13.5333 0.5 12.9628 0.5H12.9646Z"
-                fill="#FBFBFA"
-              />
-            </g>
-            <defs>
-              <clipPath id="clip0_1324_769">
-                <rect
-                  width="14"
-                  height="14"
-                  fill="white"
-                  transform="translate(0 0.5)"
-                />
-              </clipPath>
-            </defs>
-          </svg>
-          <a href=https://www.linkedin.com/in/mteresamb/ target="_blank">Linkedin</a>
-        </div>
-
-
-
-
-        <div class="aside__section__item">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="14"
-            height="15"
-            viewBox="0 0 14 15"
-            fill="none"
-          >
-            <g clip-path="url(#clip0_1324_773)">
-              <path
-                d="M7 0.672852C3.1325 0.672852 0 3.8071 0 7.67285C0 10.7663 2.0055 13.3895 4.78625 14.3141C5.13625 14.38 5.26458 14.1636 5.26458 13.9775C5.26458 13.8113 5.25875 13.3709 5.25583 12.7875C3.30867 13.2099 2.898 11.8484 2.898 11.8484C2.5795 11.0404 2.11925 10.8246 2.11925 10.8246C1.48517 10.3906 2.16825 10.3994 2.16825 10.3994C2.87117 10.4484 3.24042 11.1204 3.24042 11.1204C3.86458 12.1908 4.879 11.8816 5.27917 11.7025C5.34217 11.2499 5.52242 10.9413 5.7225 10.7663C4.16792 10.5913 2.534 9.98927 2.534 7.3071C2.534 6.54294 2.80525 5.91877 3.25442 5.42877C3.17567 5.25202 2.93942 4.54035 3.31567 3.5761C3.31567 3.5761 3.90192 3.38827 5.24067 4.2936C5.80067 4.13785 6.39567 4.06085 6.99067 4.05735C7.58567 4.06085 8.18067 4.13785 8.74067 4.2936C10.0707 3.38827 10.6569 3.5761 10.6569 3.5761C11.0332 4.54035 10.7969 5.25202 10.7269 5.42877C11.1732 5.91877 11.4444 6.54294 11.4444 7.3071C11.4444 9.99627 9.80817 10.5884 8.25067 10.7604C8.49567 10.9704 8.72317 11.3998 8.72317 12.0554C8.72317 12.9923 8.71442 13.7448 8.71442 13.9723C8.71442 14.156 8.83692 14.3748 9.19567 14.3048C11.9962 13.3866 14 10.7616 14 7.67285C14 3.8071 10.8657 0.672852 7 0.672852Z"
-                fill="#FBFBFA"
-              />
-            </g>
-            <defs>
-              <clipPath id="clip0_1324_773">
-                <rect
-                  width="14"
-                  height="14"
-                  fill="white"
-                  transform="translate(0 0.5)"
-                />
-              </clipPath>
-            </defs>
-          </svg>
-          <a href=https://github.com/MTeresaMB target="_blank">GitHub</a>
-        </div>
-
-
-
-
-
-  </div>
-</div>
-
-
-        <div class="aside__section">
-    <h3>Idiomas</h3>
-    <ul class="aside__section__list-items">
-        <li>Inglés (Habilidad limitada en el trabajo)</li>
-        <li>Español (Habilidad nativo o bilingüe)</li>
-    </ul>
-  </div>
-
-
-          <div class="aside__section">
-        <h3>Competencias</h3>
-      <ul class="aside__section__list-items">
-          <li>CSS</li>
-          <li>ES6</li>
-          <li>HTML</li>
-          <li>JavaScript</li>
-          <li>React</li>
-          <li>TypeScript</li>
-          <li>Vue</li>
-      </ul>
-    </div>
-
-          <div class="aside__section">
-      <h3>Habilidades</h3>
-      <ul class="aside__section__list-items">
-          <li>Autonomía en el aprendizaje</li>
-          <li>Proactividad</li>
-          <li>Trabajo en equipo</li>
-      </ul>
-    </div>
-
-      </aside>
-
       <main>
 
-          <section class="main__section">
+          <section class="main__section about-me__section">
     <div class="main__section__header">
-    <h2>Sobre mí</h2>
-    <hr class="divider"/>
-  </div>
-    <p class="main__section__item">Soy una desarrolladora Front End con experiencia en diseño y programación. Mi formación en Bellas Artes, junto con un Ciclo Formativo Superior DAW, Bootcamp JavaScript + TypeScript y un Máster en Front End, me ha preparado para combinar creatividad y habilidades técnicas. Actualmente, contribuyo al proyecto ManfredExport utilizando tecnologías como React, TypeScript, HTML/CSS, EJS... para convertir JSON Schema en formatos MS Word, Markdown y HTML.</p>
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="6" viewBox="0 0 32 6" fill="none">
+        <path d="M5.51343e-07 3L32 3" stroke="#3BA0B7" stroke-width="6" />
+      </svg>
+      <h2>Sobre mí</h2>
+    </div>
+    <p>Desarrolladora Front End con experiencia en diseño y programación.Mi formación en Bellas Artes, junto con un Ciclo Formativo Superior DAW, Bootcamp JavaScript + TypeScript y un Máster en Front End, me ha preparado para combinar creatividad y habilidades técnicas, en la actualidad estoy complementando mi perfil con habilidades de back cursando un Bootcamp Backend. También estoy involucrada en proyectos open source de la comunidad cómo Manfred Export y Mongo Modeler, haciendo uso de tecnologías com React, TypeScript, HTML/CSS/SVG, VITE, VITEST, EJS...</p>
   </section>
 
-
-
-        <section class="main__section">
+          <section class="main__section">
     <div class="main__section__header">
-      <h2>Experiencia / Carrera</h2>
-      <hr class="divider" />
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="6" viewBox="0 0 32 6" fill="none">
+        <path d="M5.51343e-07 3L32 3" stroke="#3BA0B7" stroke-width="6" />
+      </svg>
+      <h2>Idiomas</h2>
     </div>
-      <div class="main__section__item">
-        <div class="dot-icon">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="8"
-            height="8"
-            viewBox="0 0 8 8"
-            fill="none"
-          >
-            <circle opacity="0.33" cx="4" cy="4" r="4" fill="#247A7E" />
-          </svg>
-        </div>
-        <div class="section__content">
-            <h3>Lemoncoders</h3>
-          <div class="section__content__date">
-            <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 18 18"
-                  fill="none"
-                >
-                  <path
-                    opacity="0.75"
-                    d="M4.33333 1V3M13.6667 1V3M1 15V5C1 4.46957 1.21071 3.96086 1.58579 3.58579C1.96086 3.21071 2.46957 3 3 3H15C15.5304 3 16.0391 3.21071 16.4142 3.58579C16.7893 3.96086 17 4.46957 17 5V15M1 15C1 15.5304 1.21071 16.0391 1.58579 16.4142C1.96086 16.7893 2.46957 17 3 17H15C15.5304 17 16.0391 16.7893 16.4142 16.4142C16.7893 16.0391 17 15.5304 17 15M1 15V8.33333C1 7.8029 1.21071 7.29419 1.58579 6.91912C1.96086 6.54405 2.46957 6.33333 3 6.33333H15C15.5304 6.33333 16.0391 6.54405 16.4142 6.91912C16.7893 7.29419 17 7.8029 17 8.33333V15M9 9.66667H9.00711V9.67378H9V9.66667ZM9 11.6667H9.00711V11.6738H9V11.6667ZM9 13.6667H9.00711V13.6738H9V13.6667ZM7 11.6667H7.00711V11.6738H7V11.6667ZM7 13.6667H7.00711V13.6738H7V13.6667ZM5 11.6667H5.00711V11.6738H5V11.6667ZM5 13.6667H5.00711V13.6738H5V13.6667ZM11 9.66667H11.0071V9.67378H11V9.66667ZM11 11.6667H11.0071V11.6738H11V11.6667ZM11 13.6667H11.0071V13.6738H11V13.6667ZM13 9.66667H13.0071V9.67378H13V9.66667ZM13 11.6667H13.0071V11.6738H13V11.6667Z"
-                    stroke="#0D1418"
-                    stroke-width="0.75"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-            <p class="date">may 2023              - Actualidad
-            </p>
+    <ul class="ul__languages">
+        <li class="li__languages">Inglés
+          <div class="main__lang__level">
+              <svg xmlns="http://www.w3.org/2000/svg" width="137" height="29" viewBox="0 0 137 29" fill="none">
+                <path d="M0 28.9997L28.8421 22.8945V28.9997L0 28.9997Z" fill="#78D549" />
+                <path d="M36.0528 21.3681L64.8949 15.2568V28.9998H36.0528V21.3681Z" fill="#78D549" />
+                <path d="M72.1055 13.7338L100.948 7.62939V28.9998H72.1055V13.7338Z" fill="#EBE8DF" />
+                <path d="M108.158 6.10749L137 0V29H108.158V6.10749Z" fill="#EBE8DF" />
+              </svg>
+              <p>Fluido</p>
           </div>
-            <p class="section__content__data">Roles dentro de la empresa: <b>Frontend junior developer</b></p>
-              <p class="section__content__data">Retos:</p>
-                <ul class="section__content__data section__content__data__ul">
-                    <li>Como parte de mi proyecto de Trabajo de Fin de Máster (TFM), desarrollo plantillas dinámicas utilizando EJS, desarollado interfaz de usuario utilizando React y CSS Modules, y generando CVs en formato Word utilizando la librería DOCX, todo ello en un monorepo configurado con TurboRepo y trabajando con Git y proceso de Pull Requests.
-
-Tecnologías: React, Typescript, HTML, CSS, Emotion (CSS en JS)
-
-www.manfredexport.com</li>
-                </ul>
-        </div>
-      </div>
-      <div class="main__section__item">
-        <div class="dot-icon">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="8"
-            height="8"
-            viewBox="0 0 8 8"
-            fill="none"
-          >
-            <circle opacity="0.33" cx="4" cy="4" r="4" fill="#247A7E" />
-          </svg>
-        </div>
-        <div class="section__content">
-            <h3>Accenture</h3>
-          <div class="section__content__date">
-            <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 18 18"
-                  fill="none"
-                >
-                  <path
-                    opacity="0.75"
-                    d="M4.33333 1V3M13.6667 1V3M1 15V5C1 4.46957 1.21071 3.96086 1.58579 3.58579C1.96086 3.21071 2.46957 3 3 3H15C15.5304 3 16.0391 3.21071 16.4142 3.58579C16.7893 3.96086 17 4.46957 17 5V15M1 15C1 15.5304 1.21071 16.0391 1.58579 16.4142C1.96086 16.7893 2.46957 17 3 17H15C15.5304 17 16.0391 16.7893 16.4142 16.4142C16.7893 16.0391 17 15.5304 17 15M1 15V8.33333C1 7.8029 1.21071 7.29419 1.58579 6.91912C1.96086 6.54405 2.46957 6.33333 3 6.33333H15C15.5304 6.33333 16.0391 6.54405 16.4142 6.91912C16.7893 7.29419 17 7.8029 17 8.33333V15M9 9.66667H9.00711V9.67378H9V9.66667ZM9 11.6667H9.00711V11.6738H9V11.6667ZM9 13.6667H9.00711V13.6738H9V13.6667ZM7 11.6667H7.00711V11.6738H7V11.6667ZM7 13.6667H7.00711V13.6738H7V13.6667ZM5 11.6667H5.00711V11.6738H5V11.6667ZM5 13.6667H5.00711V13.6738H5V13.6667ZM11 9.66667H11.0071V9.67378H11V9.66667ZM11 11.6667H11.0071V11.6738H11V11.6667ZM11 13.6667H11.0071V13.6738H11V13.6667ZM13 9.66667H13.0071V9.67378H13V9.66667ZM13 11.6667H13.0071V11.6738H13V11.6667Z"
-                    stroke="#0D1418"
-                    stroke-width="0.75"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-            <p class="date">mar 2022              - jun 2022            </p>
+        </li>
+        <li class="li__languages">Español
+          <div class="main__lang__level">
+              <svg xmlns="http://www.w3.org/2000/svg" width="137" height="29" viewBox="0 0 137 29" fill="none">
+                <path d="M0 28.9997L28.8421 22.8945V28.9997L0 28.9997Z" fill="#78D549" />
+                <path d="M36.0528 21.3681L64.8949 15.2568V28.9998H36.0528V21.3681Z" fill="#78D549" />
+                <path d="M72.1055 13.7338L100.948 7.62939V28.9998H72.1055V13.7338Z" fill="#78D549" />
+                <path d="M108.158 6.10749L137 0V29H108.158V6.10749Z" fill="#78D549" />
+              </svg>
+              <p>Nativo/Bilingue</p>
           </div>
-            <p class="section__content__data">Roles dentro de la empresa: <b>Estudiante en prácticas</b></p>
-              <p class="section__content__data">Retos:</p>
-                <ul class="section__content__data section__content__data__ul">
-                    <li>Practicas de Grado Superior de Desarrollo de Aplicaciones Web en el departamento de Data & Analytics
+        </li>
+    </ul>
+  </section>
+
+        
+        
+          <section class="main__section">
+    <div class="main__section__header">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="6" viewBox="0 0 32 6" fill="none">
+        <path d="M5.51343e-07 3L32 3" stroke="#3BA0B7" stroke-width="6" />
+      </svg>
+      <h2>Experiencia / Carrera</h2>
+    </div>
+      <section class="main__section__item">
+        <h3>Mongo Modeler</h3>
+        <h4>Open source developer</h4>
+        <div class="section__content__date">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path
+              opacity="0.75"
+              d="M4.33333 1V3M13.6667 1V3M1 15V5C1 4.46957 1.21071 3.96086 1.58579 3.58579C1.96086 3.21071 2.46957 3 3 3H15C15.5304 3 16.0391 3.21071 16.4142 3.58579C16.7893 3.96086 17 4.46957 17 5V15M1 15C1 15.5304 1.21071 16.0391 1.58579 16.4142C1.96086 16.7893 2.46957 17 3 17H15C15.5304 17 16.0391 16.7893 16.4142 16.4142C16.7893 16.0391 17 15.5304 17 15M1 15V8.33333C1 7.8029 1.21071 7.29419 1.58579 6.91912C1.96086 6.54405 2.46957 6.33333 3 6.33333H15C15.5304 6.33333 16.0391 6.54405 16.4142 6.91912C16.7893 7.29419 17 7.8029 17 8.33333V15M9 9.66667H9.00711V9.67378H9V9.66667ZM9 11.6667H9.00711V11.6738H9V11.6667ZM9 13.6667H9.00711V13.6738H9V13.6667ZM7 11.6667H7.00711V11.6738H7V11.6667ZM7 13.6667H7.00711V13.6738H7V13.6667ZM5 11.6667H5.00711V11.6738H5V11.6667ZM5 13.6667H5.00711V13.6738H5V13.6667ZM11 9.66667H11.0071V9.67378H11V9.66667ZM11 11.6667H11.0071V11.6738H11V11.6667ZM11 13.6667H11.0071V13.6738H11V13.6667ZM13 9.66667H13.0071V9.67378H13V9.66667ZM13 11.6667H13.0071V11.6738H13V11.6667Z"
+              stroke="#353241"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <p>Dec 2023            - Actualidad
+          </p>
+        </div>
+        <div class="main__section__data">
+            <ul>
+                <li>Miembro del equipo de desarrollo de la herramienta Mongo Modeler, una aplicación online gratuito y open source que permite crear diagramas de bases de datos documentales, y generar transformaciónes a SVG,PDF y esquema de mongoDB.</li>
+            </ul>
+        </div>
+          <a href="https://lemoncode.net/" target="_blank">Mongo Modeler</a>
+          <h3 class="tech__tools__heading">Tecnologias y Herramientas</h3>
+          <ul class="ul__technologies">
+              <li class="li__technologies">CSS</li>
+              <li class="li__technologies">Git</li>
+              <li class="li__technologies">HTML</li>
+              <li class="li__technologies">React</li>
+              <li class="li__technologies">TypeScript</li>
+              <li class="li__technologies">Vite</li>
+              <li class="li__technologies">Vitest</li>
+          </ul>
+      </section>
+      <section class="main__section__item">
+        <h3>Manfred Export</h3>
+        <h4>Open source developer</h4>
+        <div class="section__content__date">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path
+              opacity="0.75"
+              d="M4.33333 1V3M13.6667 1V3M1 15V5C1 4.46957 1.21071 3.96086 1.58579 3.58579C1.96086 3.21071 2.46957 3 3 3H15C15.5304 3 16.0391 3.21071 16.4142 3.58579C16.7893 3.96086 17 4.46957 17 5V15M1 15C1 15.5304 1.21071 16.0391 1.58579 16.4142C1.96086 16.7893 2.46957 17 3 17H15C15.5304 17 16.0391 16.7893 16.4142 16.4142C16.7893 16.0391 17 15.5304 17 15M1 15V8.33333C1 7.8029 1.21071 7.29419 1.58579 6.91912C1.96086 6.54405 2.46957 6.33333 3 6.33333H15C15.5304 6.33333 16.0391 6.54405 16.4142 6.91912C16.7893 7.29419 17 7.8029 17 8.33333V15M9 9.66667H9.00711V9.67378H9V9.66667ZM9 11.6667H9.00711V11.6738H9V11.6667ZM9 13.6667H9.00711V13.6738H9V13.6667ZM7 11.6667H7.00711V11.6738H7V11.6667ZM7 13.6667H7.00711V13.6738H7V13.6667ZM5 11.6667H5.00711V11.6738H5V11.6667ZM5 13.6667H5.00711V13.6738H5V13.6667ZM11 9.66667H11.0071V9.67378H11V9.66667ZM11 11.6667H11.0071V11.6738H11V11.6667ZM11 13.6667H11.0071V13.6738H11V13.6667ZM13 9.66667H13.0071V9.67378H13V9.66667ZM13 11.6667H13.0071V11.6738H13V11.6667Z"
+              stroke="#353241"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <p>May 2023            - Actualidad
+          </p>
+        </div>
+        <div class="main__section__data">
+            <ul>
+                <li>Miembro del equipo de desarrollo de la herramienta Manfred Export (www.manfredexport.com), una tool que permite transformar un perfil de CV MAC (formato open source GetManfred) a formato Ms Word, Markdown y HTML con multiples plantillas y tematizado.
+
+Tecnologías: React, TypeScript, HTML, CSS, Emotion (CSS in JS), Vite, Vitest, Turbo Repo, Git.</li>
+            </ul>
+        </div>
+          <a href="https://www.manfredexport.com/" target="_blank">Manfred Export</a>
+          <h3 class="tech__tools__heading">Tecnologias y Herramientas</h3>
+          <ul class="ul__technologies">
+              <li class="li__technologies">CSS</li>
+              <li class="li__technologies">Git</li>
+              <li class="li__technologies">React</li>
+              <li class="li__technologies">TypeScript</li>
+              <li class="li__technologies">Vite</li>
+              <li class="li__technologies">Vitest</li>
+          </ul>
+      </section>
+      <section class="main__section__item">
+        <h3>Accenture</h3>
+        <h4>Estudiante en prácticas</h4>
+        <div class="section__content__date">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path
+              opacity="0.75"
+              d="M4.33333 1V3M13.6667 1V3M1 15V5C1 4.46957 1.21071 3.96086 1.58579 3.58579C1.96086 3.21071 2.46957 3 3 3H15C15.5304 3 16.0391 3.21071 16.4142 3.58579C16.7893 3.96086 17 4.46957 17 5V15M1 15C1 15.5304 1.21071 16.0391 1.58579 16.4142C1.96086 16.7893 2.46957 17 3 17H15C15.5304 17 16.0391 16.7893 16.4142 16.4142C16.7893 16.0391 17 15.5304 17 15M1 15V8.33333C1 7.8029 1.21071 7.29419 1.58579 6.91912C1.96086 6.54405 2.46957 6.33333 3 6.33333H15C15.5304 6.33333 16.0391 6.54405 16.4142 6.91912C16.7893 7.29419 17 7.8029 17 8.33333V15M9 9.66667H9.00711V9.67378H9V9.66667ZM9 11.6667H9.00711V11.6738H9V11.6667ZM9 13.6667H9.00711V13.6738H9V13.6667ZM7 11.6667H7.00711V11.6738H7V11.6667ZM7 13.6667H7.00711V13.6738H7V13.6667ZM5 11.6667H5.00711V11.6738H5V11.6667ZM5 13.6667H5.00711V13.6738H5V13.6667ZM11 9.66667H11.0071V9.67378H11V9.66667ZM11 11.6667H11.0071V11.6738H11V11.6667ZM11 13.6667H11.0071V13.6738H11V13.6667ZM13 9.66667H13.0071V9.67378H13V9.66667ZM13 11.6667H13.0071V11.6738H13V11.6667Z"
+              stroke="#353241"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <p>Mar 2022            - Jun 2022          </p>
+        </div>
+        <div class="main__section__data">
+            <ul>
+                <li>Practicas de Grado Superior de Desarrollo de Aplicaciones Web en el departamento de Data &amp; Analytics
 Implementacion de Google Analytics para la captura y análisis de datos y realizar informes</li>
-                </ul>
+            </ul>
         </div>
-      </div>
-      <div class="main__section__item">
-        <div class="dot-icon">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="8"
-            height="8"
-            viewBox="0 0 8 8"
-            fill="none"
-          >
-            <circle opacity="0.33" cx="4" cy="4" r="4" fill="#247A7E" />
+          <a href="https://www.accenture.com/es-es" target="_blank">Accenture</a>
+          <h3 class="tech__tools__heading">Tecnologias y Herramientas</h3>
+          <ul class="ul__technologies">
+              <li class="li__technologies">Google Analytics</li>
+              <li class="li__technologies">JavaScript</li>
+          </ul>
+      </section>
+      <section class="main__section__item">
+        <h3>Lionbridge</h3>
+        <h4>Internet ADS Assessor</h4>
+        <div class="section__content__date">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path
+              opacity="0.75"
+              d="M4.33333 1V3M13.6667 1V3M1 15V5C1 4.46957 1.21071 3.96086 1.58579 3.58579C1.96086 3.21071 2.46957 3 3 3H15C15.5304 3 16.0391 3.21071 16.4142 3.58579C16.7893 3.96086 17 4.46957 17 5V15M1 15C1 15.5304 1.21071 16.0391 1.58579 16.4142C1.96086 16.7893 2.46957 17 3 17H15C15.5304 17 16.0391 16.7893 16.4142 16.4142C16.7893 16.0391 17 15.5304 17 15M1 15V8.33333C1 7.8029 1.21071 7.29419 1.58579 6.91912C1.96086 6.54405 2.46957 6.33333 3 6.33333H15C15.5304 6.33333 16.0391 6.54405 16.4142 6.91912C16.7893 7.29419 17 7.8029 17 8.33333V15M9 9.66667H9.00711V9.67378H9V9.66667ZM9 11.6667H9.00711V11.6738H9V11.6667ZM9 13.6667H9.00711V13.6738H9V13.6667ZM7 11.6667H7.00711V11.6738H7V11.6667ZM7 13.6667H7.00711V13.6738H7V13.6667ZM5 11.6667H5.00711V11.6738H5V11.6667ZM5 13.6667H5.00711V13.6738H5V13.6667ZM11 9.66667H11.0071V9.67378H11V9.66667ZM11 11.6667H11.0071V11.6738H11V11.6667ZM11 13.6667H11.0071V13.6738H11V13.6667ZM13 9.66667H13.0071V9.67378H13V9.66667ZM13 11.6667H13.0071V11.6738H13V11.6667Z"
+              stroke="#353241"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
           </svg>
+          <p>Aug 2017            - Jan 2019          </p>
         </div>
-        <div class="section__content">
-            <h3>Lionbridge</h3>
-          <div class="section__content__date">
-            <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 18 18"
-                  fill="none"
-                >
-                  <path
-                    opacity="0.75"
-                    d="M4.33333 1V3M13.6667 1V3M1 15V5C1 4.46957 1.21071 3.96086 1.58579 3.58579C1.96086 3.21071 2.46957 3 3 3H15C15.5304 3 16.0391 3.21071 16.4142 3.58579C16.7893 3.96086 17 4.46957 17 5V15M1 15C1 15.5304 1.21071 16.0391 1.58579 16.4142C1.96086 16.7893 2.46957 17 3 17H15C15.5304 17 16.0391 16.7893 16.4142 16.4142C16.7893 16.0391 17 15.5304 17 15M1 15V8.33333C1 7.8029 1.21071 7.29419 1.58579 6.91912C1.96086 6.54405 2.46957 6.33333 3 6.33333H15C15.5304 6.33333 16.0391 6.54405 16.4142 6.91912C16.7893 7.29419 17 7.8029 17 8.33333V15M9 9.66667H9.00711V9.67378H9V9.66667ZM9 11.6667H9.00711V11.6738H9V11.6667ZM9 13.6667H9.00711V13.6738H9V13.6667ZM7 11.6667H7.00711V11.6738H7V11.6667ZM7 13.6667H7.00711V13.6738H7V13.6667ZM5 11.6667H5.00711V11.6738H5V11.6667ZM5 13.6667H5.00711V13.6738H5V13.6667ZM11 9.66667H11.0071V9.67378H11V9.66667ZM11 11.6667H11.0071V11.6738H11V11.6667ZM11 13.6667H11.0071V13.6738H11V13.6667ZM13 9.66667H13.0071V9.67378H13V9.66667ZM13 11.6667H13.0071V11.6738H13V11.6667Z"
-                    stroke="#0D1418"
-                    stroke-width="0.75"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-            <p class="date">ago 2017              - ene 2019            </p>
-          </div>
-            <p class="section__content__data">Roles dentro de la empresa: <b>Internet ADS Assessor</b></p>
-              <p class="section__content__data">Retos:</p>
-                <ul class="section__content__data section__content__data__ul">
-                    <li>Testing funcional
+        <div class="main__section__data">
+            <ul>
+                <li>Testing funcional.
 Análisis y control de calidad de diferentes servicios web</li>
-                </ul>
+            </ul>
         </div>
-      </div>
-    </section>
+          <a href="https://www.lionbridge.com/es/" target="_blank">Lionbridge</a>
+      </section>
+  </section>
 
           <section class="main__section">
-      <div class="main__section__header">
-        <h2>Estudios</h2>
-        <hr class="divider" />
-      </div>
-      <div class="main__section__item">
-        <div class="dot-icon">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="8"
-            height="8"
-            viewBox="0 0 8 8"
-            fill="none"
-          >
-            <circle opacity="0.33" cx="4" cy="4" r="4" fill="#247A7E" />
+    <div class="main__section__header">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="6" viewBox="0 0 32 6" fill="none">
+        <path d="M5.51343e-07 3L32 3" stroke="#3BA0B7" stroke-width="6" />
+      </svg>
+      <h2>Estudios</h2>
+    </div>
+      <section class="main__section__item">
+        <h3>Bootcamp Backend</h3>
+          <h4>Lemoncode</h4>
+        <div class="section__content__date">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path
+              opacity="0.75"
+              d="M4.33333 1V3M13.6667 1V3M1 15V5C1 4.46957 1.21071 3.96086 1.58579 3.58579C1.96086 3.21071 2.46957 3 3 3H15C15.5304 3 16.0391 3.21071 16.4142 3.58579C16.7893 3.96086 17 4.46957 17 5V15M1 15C1 15.5304 1.21071 16.0391 1.58579 16.4142C1.96086 16.7893 2.46957 17 3 17H15C15.5304 17 16.0391 16.7893 16.4142 16.4142C16.7893 16.0391 17 15.5304 17 15M1 15V8.33333C1 7.8029 1.21071 7.29419 1.58579 6.91912C1.96086 6.54405 2.46957 6.33333 3 6.33333H15C15.5304 6.33333 16.0391 6.54405 16.4142 6.91912C16.7893 7.29419 17 7.8029 17 8.33333V15M9 9.66667H9.00711V9.67378H9V9.66667ZM9 11.6667H9.00711V11.6738H9V11.6667ZM9 13.6667H9.00711V13.6738H9V13.6667ZM7 11.6667H7.00711V11.6738H7V11.6667ZM7 13.6667H7.00711V13.6738H7V13.6667ZM5 11.6667H5.00711V11.6738H5V11.6667ZM5 13.6667H5.00711V13.6738H5V13.6667ZM11 9.66667H11.0071V9.67378H11V9.66667ZM11 11.6667H11.0071V11.6738H11V11.6667ZM11 13.6667H11.0071V13.6738H11V13.6667ZM13 9.66667H13.0071V9.67378H13V9.66667ZM13 11.6667H13.0071V11.6738H13V11.6667Z"
+              stroke="#353241"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
           </svg>
+          <p>
+            Jun 2023            - Actualidad
+          </p>
         </div>
-        <div class="section__content">
-            <h3>Master Frontend</h3>
-          <div class="section__content__date">
-            <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 18 18"
-                  fill="none"
-                >
-                  <path
-                    opacity="0.75"
-                    d="M4.33333 1V3M13.6667 1V3M1 15V5C1 4.46957 1.21071 3.96086 1.58579 3.58579C1.96086 3.21071 2.46957 3 3 3H15C15.5304 3 16.0391 3.21071 16.4142 3.58579C16.7893 3.96086 17 4.46957 17 5V15M1 15C1 15.5304 1.21071 16.0391 1.58579 16.4142C1.96086 16.7893 2.46957 17 3 17H15C15.5304 17 16.0391 16.7893 16.4142 16.4142C16.7893 16.0391 17 15.5304 17 15M1 15V8.33333C1 7.8029 1.21071 7.29419 1.58579 6.91912C1.96086 6.54405 2.46957 6.33333 3 6.33333H15C15.5304 6.33333 16.0391 6.54405 16.4142 6.91912C16.7893 7.29419 17 7.8029 17 8.33333V15M9 9.66667H9.00711V9.67378H9V9.66667ZM9 11.6667H9.00711V11.6738H9V11.6667ZM9 13.6667H9.00711V13.6738H9V13.6667ZM7 11.6667H7.00711V11.6738H7V11.6667ZM7 13.6667H7.00711V13.6738H7V13.6667ZM5 11.6667H5.00711V11.6738H5V11.6667ZM5 13.6667H5.00711V13.6738H5V13.6667ZM11 9.66667H11.0071V9.67378H11V9.66667ZM11 11.6667H11.0071V11.6738H11V11.6667ZM11 13.6667H11.0071V13.6738H11V13.6667ZM13 9.66667H13.0071V9.67378H13V9.66667ZM13 11.6667H13.0071V11.6738H13V11.6667Z"
-                    stroke="#0D1418"
-                    stroke-width="0.75"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                <p class="date">sept 2022                  - abr 2023                </p>
-          </div>
-            <p class="data">Tipo de estudios: <b>No acreditado</b></p>
-            <p class="data">
-              Grado obtenido: 
-              <b>Obtenido</b>
-              
-            </p>
-            <p class="data">Nombre de la institución: <b>Lemoncode</b></p>
+        <div class="main__section__data">
+          <p>Cursando el Bootcamp Backend Lemoncode, area de .net y SQL Server, en este booctcamp se cubre tanto modelado de bases de datos, conceptos de SQL Server, consultas SQL, lenguaje C#, desarrollo de APIs REST, Entity Framework, pruebas unitarias, y despliegue en la nube.</p>
         </div>
-      </div>
-      <div class="main__section__item">
-        <div class="dot-icon">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="8"
-            height="8"
-            viewBox="0 0 8 8"
-            fill="none"
-          >
-            <circle opacity="0.33" cx="4" cy="4" r="4" fill="#247A7E" />
+          <h3 class="tech__tools__heading">Tecnologias y Herramientas</h3>
+          <ul class="ul__technologies">
+              <li class="li__technologies">.NET</li>
+              <li class="li__technologies">Azure</li>
+              <li class="li__technologies">C#</li>
+              <li class="li__technologies">Entity</li>
+              <li class="li__technologies">Express</li>
+              <li class="li__technologies">GraphQL</li>
+              <li class="li__technologies">MongoDB</li>
+              <li class="li__technologies">Mongoose</li>
+              <li class="li__technologies">NodeJS</li>
+              <li class="li__technologies">SQL</li>
+              <li class="li__technologies">SQLServer</li>
+              <li class="li__technologies">SignalR</li>
+              <li class="li__technologies">TypeScript</li>
+              <li class="li__technologies">Visual Studio</li>
+          </ul>
+      </section>
+      <section class="main__section__item">
+        <h3>Master Frontend</h3>
+          <h4>Lemoncode</h4>
+        <div class="section__content__date">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path
+              opacity="0.75"
+              d="M4.33333 1V3M13.6667 1V3M1 15V5C1 4.46957 1.21071 3.96086 1.58579 3.58579C1.96086 3.21071 2.46957 3 3 3H15C15.5304 3 16.0391 3.21071 16.4142 3.58579C16.7893 3.96086 17 4.46957 17 5V15M1 15C1 15.5304 1.21071 16.0391 1.58579 16.4142C1.96086 16.7893 2.46957 17 3 17H15C15.5304 17 16.0391 16.7893 16.4142 16.4142C16.7893 16.0391 17 15.5304 17 15M1 15V8.33333C1 7.8029 1.21071 7.29419 1.58579 6.91912C1.96086 6.54405 2.46957 6.33333 3 6.33333H15C15.5304 6.33333 16.0391 6.54405 16.4142 6.91912C16.7893 7.29419 17 7.8029 17 8.33333V15M9 9.66667H9.00711V9.67378H9V9.66667ZM9 11.6667H9.00711V11.6738H9V11.6667ZM9 13.6667H9.00711V13.6738H9V13.6667ZM7 11.6667H7.00711V11.6738H7V11.6667ZM7 13.6667H7.00711V13.6738H7V13.6667ZM5 11.6667H5.00711V11.6738H5V11.6667ZM5 13.6667H5.00711V13.6738H5V13.6667ZM11 9.66667H11.0071V9.67378H11V9.66667ZM11 11.6667H11.0071V11.6738H11V11.6667ZM11 13.6667H11.0071V13.6738H11V13.6667ZM13 9.66667H13.0071V9.67378H13V9.66667ZM13 11.6667H13.0071V11.6738H13V11.6667Z"
+              stroke="#353241"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
           </svg>
+          <p>
+            Sep 2022            - Apr 2023          </p>
         </div>
-        <div class="section__content">
-            <h3>Bootcamp Javascript</h3>
-          <div class="section__content__date">
-            <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 18 18"
-                  fill="none"
-                >
-                  <path
-                    opacity="0.75"
-                    d="M4.33333 1V3M13.6667 1V3M1 15V5C1 4.46957 1.21071 3.96086 1.58579 3.58579C1.96086 3.21071 2.46957 3 3 3H15C15.5304 3 16.0391 3.21071 16.4142 3.58579C16.7893 3.96086 17 4.46957 17 5V15M1 15C1 15.5304 1.21071 16.0391 1.58579 16.4142C1.96086 16.7893 2.46957 17 3 17H15C15.5304 17 16.0391 16.7893 16.4142 16.4142C16.7893 16.0391 17 15.5304 17 15M1 15V8.33333C1 7.8029 1.21071 7.29419 1.58579 6.91912C1.96086 6.54405 2.46957 6.33333 3 6.33333H15C15.5304 6.33333 16.0391 6.54405 16.4142 6.91912C16.7893 7.29419 17 7.8029 17 8.33333V15M9 9.66667H9.00711V9.67378H9V9.66667ZM9 11.6667H9.00711V11.6738H9V11.6667ZM9 13.6667H9.00711V13.6738H9V13.6667ZM7 11.6667H7.00711V11.6738H7V11.6667ZM7 13.6667H7.00711V13.6738H7V13.6667ZM5 11.6667H5.00711V11.6738H5V11.6667ZM5 13.6667H5.00711V13.6738H5V13.6667ZM11 9.66667H11.0071V9.67378H11V9.66667ZM11 11.6667H11.0071V11.6738H11V11.6667ZM11 13.6667H11.0071V13.6738H11V13.6667ZM13 9.66667H13.0071V9.67378H13V9.66667ZM13 11.6667H13.0071V11.6738H13V11.6667Z"
-                    stroke="#0D1418"
-                    stroke-width="0.75"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                <p class="date">abr 2021                  - sept 2022                </p>
-          </div>
-            <p class="data">Tipo de estudios: <b>No acreditado</b></p>
-            <p class="data">
-              Grado obtenido: 
-              <b>Obtenido</b>
-              
-            </p>
-            <p class="data">Nombre de la institución: <b>Lemoncode</b></p>
+        <div class="main__section__data">
+          <p>Este máster está dividido en los siguientes módulos: layout, lenguaje, bundling, frameworks, testing (unit test y e2e), interacción con servidor (api rest + graphql + websockets), y despliegue en la nube.
+Está impartido por un equipo de 14 profesores y tiene una duración de 7 meses, el nivel de partida requiere tener una buena base de fundamentos de programación (en mi caso la adquirí cursando previamente  un ciclo formativo superior DAW y un Bootcamp de JavaScript).
+
+Algunas de las tecnologías que se cubren: HTML, CSS, SASS, CSS in JS, JavaScript, TypeScript, Webpack, Vite, React, Angular, Vue, SolidJS, Svelte, NextJS, RXJS, Jest, D3js, Axios, GraphQL, Socket.io, OAUTH2, Pasarelas de pago, conceptos de ciberseguridad, docker, despliegue en la nube (Azure, AWS)</p>
         </div>
-      </div>
-      <div class="main__section__item">
-        <div class="dot-icon">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="8"
-            height="8"
-            viewBox="0 0 8 8"
-            fill="none"
-          >
-            <circle opacity="0.33" cx="4" cy="4" r="4" fill="#247A7E" />
+          <h3 class="tech__tools__heading">Tecnologias y Herramientas</h3>
+          <ul class="ul__technologies">
+              <li class="li__technologies">Angular2+</li>
+              <li class="li__technologies">Axios</li>
+              <li class="li__technologies">CSS</li>
+              <li class="li__technologies">Docker</li>
+              <li class="li__technologies">GraphQL</li>
+              <li class="li__technologies">HTML</li>
+              <li class="li__technologies">JavaScript</li>
+              <li class="li__technologies">Jest</li>
+              <li class="li__technologies">NextJS</li>
+              <li class="li__technologies">React</li>
+              <li class="li__technologies">RxJS</li>
+              <li class="li__technologies">Sass</li>
+              <li class="li__technologies">Socket.io</li>
+              <li class="li__technologies">Svelte</li>
+              <li class="li__technologies">TypeScript</li>
+              <li class="li__technologies">Vite</li>
+              <li class="li__technologies">Vue</li>
+              <li class="li__technologies">Webpack</li>
+          </ul>
+      </section>
+      <section class="main__section__item">
+        <h3>Bootcamp Javascript</h3>
+          <h4>Lemoncode</h4>
+        <div class="section__content__date">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path
+              opacity="0.75"
+              d="M4.33333 1V3M13.6667 1V3M1 15V5C1 4.46957 1.21071 3.96086 1.58579 3.58579C1.96086 3.21071 2.46957 3 3 3H15C15.5304 3 16.0391 3.21071 16.4142 3.58579C16.7893 3.96086 17 4.46957 17 5V15M1 15C1 15.5304 1.21071 16.0391 1.58579 16.4142C1.96086 16.7893 2.46957 17 3 17H15C15.5304 17 16.0391 16.7893 16.4142 16.4142C16.7893 16.0391 17 15.5304 17 15M1 15V8.33333C1 7.8029 1.21071 7.29419 1.58579 6.91912C1.96086 6.54405 2.46957 6.33333 3 6.33333H15C15.5304 6.33333 16.0391 6.54405 16.4142 6.91912C16.7893 7.29419 17 7.8029 17 8.33333V15M9 9.66667H9.00711V9.67378H9V9.66667ZM9 11.6667H9.00711V11.6738H9V11.6667ZM9 13.6667H9.00711V13.6738H9V13.6667ZM7 11.6667H7.00711V11.6738H7V11.6667ZM7 13.6667H7.00711V13.6738H7V13.6667ZM5 11.6667H5.00711V11.6738H5V11.6667ZM5 13.6667H5.00711V13.6738H5V13.6667ZM11 9.66667H11.0071V9.67378H11V9.66667ZM11 11.6667H11.0071V11.6738H11V11.6667ZM11 13.6667H11.0071V13.6738H11V13.6667ZM13 9.66667H13.0071V9.67378H13V9.66667ZM13 11.6667H13.0071V11.6738H13V11.6667Z"
+              stroke="#353241"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
           </svg>
+          <p>
+            Apr 2021            - Sep 2022          </p>
         </div>
-        <div class="section__content">
-            <h3>Ciclo Superior DAW</h3>
-          <div class="section__content__date">
-            <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 18 18"
-                  fill="none"
-                >
-                  <path
-                    opacity="0.75"
-                    d="M4.33333 1V3M13.6667 1V3M1 15V5C1 4.46957 1.21071 3.96086 1.58579 3.58579C1.96086 3.21071 2.46957 3 3 3H15C15.5304 3 16.0391 3.21071 16.4142 3.58579C16.7893 3.96086 17 4.46957 17 5V15M1 15C1 15.5304 1.21071 16.0391 1.58579 16.4142C1.96086 16.7893 2.46957 17 3 17H15C15.5304 17 16.0391 16.7893 16.4142 16.4142C16.7893 16.0391 17 15.5304 17 15M1 15V8.33333C1 7.8029 1.21071 7.29419 1.58579 6.91912C1.96086 6.54405 2.46957 6.33333 3 6.33333H15C15.5304 6.33333 16.0391 6.54405 16.4142 6.91912C16.7893 7.29419 17 7.8029 17 8.33333V15M9 9.66667H9.00711V9.67378H9V9.66667ZM9 11.6667H9.00711V11.6738H9V11.6667ZM9 13.6667H9.00711V13.6738H9V13.6667ZM7 11.6667H7.00711V11.6738H7V11.6667ZM7 13.6667H7.00711V13.6738H7V13.6667ZM5 11.6667H5.00711V11.6738H5V11.6667ZM5 13.6667H5.00711V13.6738H5V13.6667ZM11 9.66667H11.0071V9.67378H11V9.66667ZM11 11.6667H11.0071V11.6738H11V11.6667ZM11 13.6667H11.0071V13.6738H11V13.6667ZM13 9.66667H13.0071V9.67378H13V9.66667ZM13 11.6667H13.0071V11.6738H13V11.6667Z"
-                    stroke="#0D1418"
-                    stroke-width="0.75"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                <p class="date">sept 2019                  - sept 2022                </p>
-          </div>
-            <p class="data">Tipo de estudios: <b>Grado oficial</b></p>
-            <p class="data">
-              Grado obtenido: 
-              <b>Obtenido</b>
-              
-            </p>
-            <p class="data">Nombre de la institución: <b>I.E.S Campanillas</b></p>
+        <div class="main__section__data">
+          <p>Este bootcamp está enfocado en adquirir una buena base de fundamentos de programación utilizando como lenguaje vehicular JavaScript.</p>
         </div>
-      </div>
-      <div class="main__section__item">
-        <div class="dot-icon">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="8"
-            height="8"
-            viewBox="0 0 8 8"
-            fill="none"
-          >
-            <circle opacity="0.33" cx="4" cy="4" r="4" fill="#247A7E" />
+          <h3 class="tech__tools__heading">Tecnologias y Herramientas</h3>
+          <ul class="ul__technologies">
+              <li class="li__technologies">CSS</li>
+              <li class="li__technologies">HTML</li>
+              <li class="li__technologies">JavaScript</li>
+              <li class="li__technologies">Visual Studio Code</li>
+          </ul>
+      </section>
+      <section class="main__section__item">
+        <h3>Ciclo Superior DAW</h3>
+          <h4>I.E.S Campanillas</h4>
+        <div class="section__content__date">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path
+              opacity="0.75"
+              d="M4.33333 1V3M13.6667 1V3M1 15V5C1 4.46957 1.21071 3.96086 1.58579 3.58579C1.96086 3.21071 2.46957 3 3 3H15C15.5304 3 16.0391 3.21071 16.4142 3.58579C16.7893 3.96086 17 4.46957 17 5V15M1 15C1 15.5304 1.21071 16.0391 1.58579 16.4142C1.96086 16.7893 2.46957 17 3 17H15C15.5304 17 16.0391 16.7893 16.4142 16.4142C16.7893 16.0391 17 15.5304 17 15M1 15V8.33333C1 7.8029 1.21071 7.29419 1.58579 6.91912C1.96086 6.54405 2.46957 6.33333 3 6.33333H15C15.5304 6.33333 16.0391 6.54405 16.4142 6.91912C16.7893 7.29419 17 7.8029 17 8.33333V15M9 9.66667H9.00711V9.67378H9V9.66667ZM9 11.6667H9.00711V11.6738H9V11.6667ZM9 13.6667H9.00711V13.6738H9V13.6667ZM7 11.6667H7.00711V11.6738H7V11.6667ZM7 13.6667H7.00711V13.6738H7V13.6667ZM5 11.6667H5.00711V11.6738H5V11.6667ZM5 13.6667H5.00711V13.6738H5V13.6667ZM11 9.66667H11.0071V9.67378H11V9.66667ZM11 11.6667H11.0071V11.6738H11V11.6667ZM11 13.6667H11.0071V13.6738H11V13.6667ZM13 9.66667H13.0071V9.67378H13V9.66667ZM13 11.6667H13.0071V11.6738H13V11.6667Z"
+              stroke="#353241"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
           </svg>
+          <p>
+            Sep 2019            - Sep 2022          </p>
         </div>
-        <div class="section__content">
-            <h3>Master P.A.I</h3>
-          <div class="section__content__date">
-            <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 18 18"
-                  fill="none"
-                >
-                  <path
-                    opacity="0.75"
-                    d="M4.33333 1V3M13.6667 1V3M1 15V5C1 4.46957 1.21071 3.96086 1.58579 3.58579C1.96086 3.21071 2.46957 3 3 3H15C15.5304 3 16.0391 3.21071 16.4142 3.58579C16.7893 3.96086 17 4.46957 17 5V15M1 15C1 15.5304 1.21071 16.0391 1.58579 16.4142C1.96086 16.7893 2.46957 17 3 17H15C15.5304 17 16.0391 16.7893 16.4142 16.4142C16.7893 16.0391 17 15.5304 17 15M1 15V8.33333C1 7.8029 1.21071 7.29419 1.58579 6.91912C1.96086 6.54405 2.46957 6.33333 3 6.33333H15C15.5304 6.33333 16.0391 6.54405 16.4142 6.91912C16.7893 7.29419 17 7.8029 17 8.33333V15M9 9.66667H9.00711V9.67378H9V9.66667ZM9 11.6667H9.00711V11.6738H9V11.6667ZM9 13.6667H9.00711V13.6738H9V13.6667ZM7 11.6667H7.00711V11.6738H7V11.6667ZM7 13.6667H7.00711V13.6738H7V13.6667ZM5 11.6667H5.00711V11.6738H5V11.6667ZM5 13.6667H5.00711V13.6738H5V13.6667ZM11 9.66667H11.0071V9.67378H11V9.66667ZM11 11.6667H11.0071V11.6738H11V11.6667ZM11 13.6667H11.0071V13.6738H11V13.6667ZM13 9.66667H13.0071V9.67378H13V9.66667ZM13 11.6667H13.0071V11.6738H13V11.6667Z"
-                    stroke="#0D1418"
-                    stroke-width="0.75"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                <p class="date">sept 2014                  - sept 2015                </p>
-          </div>
-            <p class="data">Tipo de estudios: <b>Grado oficial</b></p>
-            <p class="data">
-              Grado obtenido: 
-              <b>Obtenido</b>
-              
-            </p>
-            <p class="data">Nombre de la institución: <b>Universidad de Malaga</b></p>
+        <div class="main__section__data">
+          <p>Grado superior de Desarrollo Aplicaciones Web.</p>
         </div>
-      </div>
-      <div class="main__section__item">
-        <div class="dot-icon">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="8"
-            height="8"
-            viewBox="0 0 8 8"
-            fill="none"
-          >
-            <circle opacity="0.33" cx="4" cy="4" r="4" fill="#247A7E" />
+          <h3 class="tech__tools__heading">Tecnologias y Herramientas</h3>
+          <ul class="ul__technologies">
+              <li class="li__technologies">CSS</li>
+              <li class="li__technologies">HTML</li>
+              <li class="li__technologies">JAVA</li>
+              <li class="li__technologies">JavaScript</li>
+              <li class="li__technologies">PHP</li>
+              <li class="li__technologies">SQL</li>
+              <li class="li__technologies">SQLServer</li>
+          </ul>
+      </section>
+      <section class="main__section__item">
+        <h3>Master P.A.I</h3>
+          <h4>Universidad de Malaga</h4>
+        <div class="section__content__date">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path
+              opacity="0.75"
+              d="M4.33333 1V3M13.6667 1V3M1 15V5C1 4.46957 1.21071 3.96086 1.58579 3.58579C1.96086 3.21071 2.46957 3 3 3H15C15.5304 3 16.0391 3.21071 16.4142 3.58579C16.7893 3.96086 17 4.46957 17 5V15M1 15C1 15.5304 1.21071 16.0391 1.58579 16.4142C1.96086 16.7893 2.46957 17 3 17H15C15.5304 17 16.0391 16.7893 16.4142 16.4142C16.7893 16.0391 17 15.5304 17 15M1 15V8.33333C1 7.8029 1.21071 7.29419 1.58579 6.91912C1.96086 6.54405 2.46957 6.33333 3 6.33333H15C15.5304 6.33333 16.0391 6.54405 16.4142 6.91912C16.7893 7.29419 17 7.8029 17 8.33333V15M9 9.66667H9.00711V9.67378H9V9.66667ZM9 11.6667H9.00711V11.6738H9V11.6667ZM9 13.6667H9.00711V13.6738H9V13.6667ZM7 11.6667H7.00711V11.6738H7V11.6667ZM7 13.6667H7.00711V13.6738H7V13.6667ZM5 11.6667H5.00711V11.6738H5V11.6667ZM5 13.6667H5.00711V13.6738H5V13.6667ZM11 9.66667H11.0071V9.67378H11V9.66667ZM11 11.6667H11.0071V11.6738H11V11.6667ZM11 13.6667H11.0071V13.6738H11V13.6667ZM13 9.66667H13.0071V9.67378H13V9.66667ZM13 11.6667H13.0071V11.6738H13V11.6667Z"
+              stroke="#353241"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
           </svg>
+          <p>
+            Sep 2014            - Sep 2015          </p>
         </div>
-        <div class="section__content">
-            <h3>Licenciatura Bellas Artes</h3>
-          <div class="section__content__date">
-            <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 18 18"
-                  fill="none"
-                >
-                  <path
-                    opacity="0.75"
-                    d="M4.33333 1V3M13.6667 1V3M1 15V5C1 4.46957 1.21071 3.96086 1.58579 3.58579C1.96086 3.21071 2.46957 3 3 3H15C15.5304 3 16.0391 3.21071 16.4142 3.58579C16.7893 3.96086 17 4.46957 17 5V15M1 15C1 15.5304 1.21071 16.0391 1.58579 16.4142C1.96086 16.7893 2.46957 17 3 17H15C15.5304 17 16.0391 16.7893 16.4142 16.4142C16.7893 16.0391 17 15.5304 17 15M1 15V8.33333C1 7.8029 1.21071 7.29419 1.58579 6.91912C1.96086 6.54405 2.46957 6.33333 3 6.33333H15C15.5304 6.33333 16.0391 6.54405 16.4142 6.91912C16.7893 7.29419 17 7.8029 17 8.33333V15M9 9.66667H9.00711V9.67378H9V9.66667ZM9 11.6667H9.00711V11.6738H9V11.6667ZM9 13.6667H9.00711V13.6738H9V13.6667ZM7 11.6667H7.00711V11.6738H7V11.6667ZM7 13.6667H7.00711V13.6738H7V13.6667ZM5 11.6667H5.00711V11.6738H5V11.6667ZM5 13.6667H5.00711V13.6738H5V13.6667ZM11 9.66667H11.0071V9.67378H11V9.66667ZM11 11.6667H11.0071V11.6738H11V11.6667ZM11 13.6667H11.0071V13.6738H11V13.6667ZM13 9.66667H13.0071V9.67378H13V9.66667ZM13 11.6667H13.0071V11.6738H13V11.6667Z"
-                    stroke="#0D1418"
-                    stroke-width="0.75"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                <p class="date">sept 2009                  - sept 2013                </p>
-          </div>
-            <p class="data">Tipo de estudios: <b>Grado oficial</b></p>
-            <p class="data">
-              Grado obtenido: 
-              <b>Obtenido</b>
-              
-            </p>
-            <p class="data">Nombre de la institución: <b>Universidad de Malaga</b></p>
+        <div class="main__section__data">
+          <p>Máster en Producción Artística Interdisciplinar. Centrado en el desarrollo de un proyecto artístico individual.
+</p>
         </div>
-      </div>
-    </section>
+      </section>
+      <section class="main__section__item">
+        <h3>Licenciatura Bellas Artes</h3>
+          <h4>Universidad de Malaga</h4>
+        <div class="section__content__date">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path
+              opacity="0.75"
+              d="M4.33333 1V3M13.6667 1V3M1 15V5C1 4.46957 1.21071 3.96086 1.58579 3.58579C1.96086 3.21071 2.46957 3 3 3H15C15.5304 3 16.0391 3.21071 16.4142 3.58579C16.7893 3.96086 17 4.46957 17 5V15M1 15C1 15.5304 1.21071 16.0391 1.58579 16.4142C1.96086 16.7893 2.46957 17 3 17H15C15.5304 17 16.0391 16.7893 16.4142 16.4142C16.7893 16.0391 17 15.5304 17 15M1 15V8.33333C1 7.8029 1.21071 7.29419 1.58579 6.91912C1.96086 6.54405 2.46957 6.33333 3 6.33333H15C15.5304 6.33333 16.0391 6.54405 16.4142 6.91912C16.7893 7.29419 17 7.8029 17 8.33333V15M9 9.66667H9.00711V9.67378H9V9.66667ZM9 11.6667H9.00711V11.6738H9V11.6667ZM9 13.6667H9.00711V13.6738H9V13.6667ZM7 11.6667H7.00711V11.6738H7V11.6667ZM7 13.6667H7.00711V13.6738H7V13.6667ZM5 11.6667H5.00711V11.6738H5V11.6667ZM5 13.6667H5.00711V13.6738H5V13.6667ZM11 9.66667H11.0071V9.67378H11V9.66667ZM11 11.6667H11.0071V11.6738H11V11.6667ZM11 13.6667H11.0071V13.6738H11V13.6667ZM13 9.66667H13.0071V9.67378H13V9.66667ZM13 11.6667H13.0071V11.6738H13V11.6667Z"
+              stroke="#353241"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <p>
+            Sep 2009            - Sep 2013          </p>
+        </div>
+        <div class="main__section__data">
+          <p>Licenciada en Bellas Artes por la Universidad de Málaga. Enfocada en el discurso contemporáneo del arte. Uso de las T.I.C y la interdisciplinariedad en la producción artística.</p>
+        </div>
+      </section>
+  </section>
 
       </main>
 
